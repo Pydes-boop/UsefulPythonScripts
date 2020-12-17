@@ -7,7 +7,7 @@ import os
 import re
 
 # Hardcoded this Path because it probably doesnt exist on your System so you dont fuck shit up by executing it
-path = '/Users/Dani/Documents/PythonTest'
+path = 'C:/Users/Dani/Documents/Blender/Textures'
 files = os.listdir(path)
   
 # Main Function
