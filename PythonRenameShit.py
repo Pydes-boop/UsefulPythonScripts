@@ -19,6 +19,7 @@ def main():
 def addUnderscores(): 
   
     for count, filename in enumerate(os.listdir(path)): 
+        print(filename)
         src = path + '/' + filename
         dst = path + '/' + re.sub(r"(\w)([A-Z])", r"\1_\2", filename)
         #dst2 --> removing double Underscores
