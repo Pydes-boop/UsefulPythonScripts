@@ -15,6 +15,8 @@ output = output.replace('\\', '/')
 
 
 # unsure if needed?
+# not needed
+# TODO Add Basic Program Run Functionality
 generateOne = True
 WIDTH = 512
 iterations = 1
