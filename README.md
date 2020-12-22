@@ -1,6 +1,6 @@
 # UsefulPythonScripts
 
-In this Project i collect the Python Scripts i write for day to day Automation <br>
+This Repository serves as a collection of python scripts for my day to day automation as well as a general collections of small scripts i write<br>
 *I'd rather spend an Hour automating a daily 5 Seconds Task, then doing that Task manually for a year* <br>
 
 ## Table of Contents: <br>
