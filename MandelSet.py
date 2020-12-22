@@ -11,11 +11,6 @@ from numpy import complex, array, conj
 from dearpygui.core import *
 from dearpygui.simple import *
 
-# Set Output Path (Generates Multiple Images there and then creates a .gif from them)
-output = sys.path[0] + '/Mandel_Set_Images/'
-output = output.replace('\\', '/')
-
-
 # standard Values
 generateOne = False
 WIDTH = 512
@@ -27,19 +22,6 @@ mandelSetResolution = 10
 commandLine = True
 pyGui = True
 
-# MandelSetCode
-# if(True) just exists so i can "open/close" that part of the code in VScode (<-- is that stupid? Yes. But i dont care)
-# create new folder for runtime so pictures dont overwrite each other
-timestr = time.strftime("%d%m%Y-%H%M%S")
-output = output + timestr + "/"
-try:
-    os.mkdir(output)
-except OSError:
-    sys.exit("Creation of the directory %s failed" % output)
-    sys.exit("Couldnt create Save Folder (OSError), exiting Task")
-else:
-    print("Successfully created the directory %s " % output)
-
 # a function to return a tuple of colors
 # as integer value of rgb
 def rgb_conv(i):
@@ -47,7 +29,7 @@ def rgb_conv(i):
     return tuple(color.astype(int))
 
 # function defining a mandelbrot
-def mandelbrot(x, y, power):
+def mandelbrot(x, y, power, mandelSetResolution):
     c0 = complex(x, y)
     c = 0
     for i in range(1, mandelSetResolution):
@@ -61,6 +43,20 @@ if(generateOne):
     iterations = 1
 
 def mandelSet_calculation(WIDTH, iterations, power, stepsize, mandelSetResolution):
+    
+    # create new folder for runtime so pictures dont overwrite each other
+    output = sys.path[0] + '/Mandel_Set_Images/'
+    output = output.replace('\\', '/')
+    timestr = time.strftime("%d%m%Y-%H%M%S")
+    output = output + timestr + "/"
+    try:
+        os.mkdir(output)
+    except OSError:
+        sys.exit("Creation of the directory %s failed" % output)
+        sys.exit("Couldnt create Save Folder (OSError), exiting Task")
+    else:
+        print("Successfully created the directory %s " % output)
+
     # setting starting int
     for i in range(iterations):
         # creating the new image in RGB mode
@@ -74,7 +70,7 @@ def mandelSet_calculation(WIDTH, iterations, power, stepsize, mandelSetResolutio
                 " iterations: %.2f %%" % (x / WIDTH * 100.0))
             for y in range(img.size[1]):
                 pixels[x, y] = mandelbrot((x - (WIDTH * 0.5)) / (WIDTH / 4),
-                                        (y - (WIDTH * 0.5)) / (WIDTH / 4), power)
+                                        (y - (WIDTH * 0.5)) / (WIDTH / 4), power, mandelSetResolution)
 
         # to display the created fractal after
         # completing the given number of iterations
