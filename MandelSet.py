@@ -47,6 +47,13 @@ def mandelSet_calculation(WIDTH, iterations, power, stepsize, mandelSetResolutio
     # create new folder for runtime so pictures dont overwrite each other
     output = sys.path[0] + '/Mandel_Set_Images/'
     output = output.replace('\\', '/')
+    try:
+        os.mkdir(output)
+    except OSError:
+        sys.exit("Creation of the directory %s failed" % output)
+        sys.exit("Couldnt create Save Folder (OSError), exiting Task")
+    else:
+        print("Successfully created the directory %s " % output)
     timestr = time.strftime("%d%m%Y-%H%M%S")
     output = output + timestr + "/"
     try:
@@ -89,11 +96,8 @@ def mandelSet_calculation(WIDTH, iterations, power, stepsize, mandelSetResolutio
     img.save(fp=fp_out, format='GIF', append_images=imgs,
             save_all=True, duration=50, loop=0)
     
-
-    #Opening Final Result
-    open(output + "image.gif")
-    #img = Image.open(output + "image.gif")
-    #img.show()
+    print("Program succesfully executed\ncreated " + "%s" % iterations + " Mandelset images, starting at Power " + "%s" % power +
+        " up to " + "%s" % (power+((iterations-1)*stepsize)) + " with a resolution of " + "%s" % WIDTH + "\nsaved images to " + output)
 
 if(pyGui): 
     commandLine = False
@@ -108,8 +112,6 @@ if(pyGui):
         stepsize = float(get_value("Stepsize for ^power growth between Images"))
         mandelSetResolution = int(get_value("MandelSet Iterations per Calculation"))
         mandelSet_calculation(WIDTH, iterations, power, stepsize, mandelSetResolution)
-        print("Program succesfully executed\ncreated " + "%s" % iterations + " Mandelset images, starting at Power " + "%s" % power +
-        " up to " + "%s" % (power+((iterations-1)*stepsize)) + " with a resolution of " + "%s" % WIDTH + "\nsaved images to " + output)
 
     with window("Main Window"):
         add_text("Enter values used for Calculation")
