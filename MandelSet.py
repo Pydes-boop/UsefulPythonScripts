@@ -95,8 +95,9 @@ def mandelSet_calculation(WIDTH, iterations, power, stepsize, mandelSetResolutio
     
 
     #Opening Final Result
-    img = Image.open(output + "image.gif")
-    img.show()
+    open(output + "image.gif")
+    #img = Image.open(output + "image.gif")
+    #img.show()
 
 if(pyGui): 
     commandLine = False
