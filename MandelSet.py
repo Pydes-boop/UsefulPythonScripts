@@ -133,21 +133,18 @@ if(commandLine):
         if(userInput == 'Yes' or userInput == 'yes'):
             generateOne = False
             break
-        else:
-            if(userInput == 'No' or userInput == 'no'):
+        elif(userInput == 'No' or userInput == 'no'):
                 generateOne = True
                 break
-            else:
-                if(userInput == 'Kill' or userInput == 'kill'):
-                    sys.exit("Killed Task")
-                    input("Press enter to exit...")
-                else:
-                    if(userInput == 'basic'):
-                        skipCommandLine = True
-                        break
-                    else:
-                        print("Invalid Input: " + userInput +
-                        "\nWould you like to generate multiple Images? >>> Yes/No/Kill")
+        elif(userInput == 'Kill' or userInput == 'kill'):
+                sys.exit("Killed Task")
+                input("Press enter to exit...")
+        elif(userInput == 'basic'):
+                skipCommandLine = True
+                break
+        else:
+            print("Invalid Input: " + userInput +
+            "\nWould you like to generate multiple Images? >>> Yes/No/Kill")
                     
     if(skipCommandLine == False):
         # ImageResolution
@@ -173,13 +170,12 @@ if(commandLine):
                 if(userInput.isdigit):
                     iterations = int(userInput)
                     break
-                else:
-                    if(userInput == 'Kill' or userInput == 'kill'):
+                elif(userInput == 'Kill' or userInput == 'kill'):
                         sys.exit("Killed Task")
                         input("Press enter to exit...")
-                    else:
-                        print("Invalid Input: " + userInput +
-                            "\nHow many Images should be created? Please enter a number...")
+                else:
+                    print("Invalid Input: " + userInput +
+                        "\nHow many Images should be created? Please enter a number...")
 
             print("Please enter a number for the growth between images...")
             while(True):
@@ -187,13 +183,12 @@ if(commandLine):
                 if(userInput.replace(".", "", 1).isdigit()):
                     stepsize = float(userInput)
                     break
-                else:
-                    if(userInput == 'Kill' or userInput == 'kill'):
+                elif(userInput == 'Kill' or userInput == 'kill'):
                         sys.exit("Killed Task")
                         input("Press enter to exit...")
-                    else:
-                        print("Invalid Input: " + userInput +
-                            "\nPlease enter a number for the growth between images...")
+                else:
+                    print("Invalid Input: " + userInput +
+                        "\nPlease enter a number for the growth between images...")
 
         # Potency / Power
         if(generateOne):
@@ -209,18 +204,17 @@ if(commandLine):
                 is_Dig = False
             if(is_Dig):
                 break
-            else:
-                if(userInput == 'Kill' or userInput == 'kill'):
+            elif(userInput == 'Kill' or userInput == 'kill'):
                     sys.exit("Killed Task")
                     input("Press enter to exit...")
+            else:
+                print("Invalid Input: " + userInput)
+                if(generateOne):
+                    print(
+                        "How many fractals do you want / What should be the potency of the Mandelset Calculation?")
                 else:
-                    print("Invalid Input: " + userInput)
-                    if(generateOne):
-                        print(
-                            "How many fractals do you want / What should be the potency of the Mandelset Calculation?")
-                    else:
-                        print("Invalid Input: " + userInput +
-                            "\nAt which potency do you want to start generating the Mandelset Images? Please enter a number...")
+                    print("Invalid Input: " + userInput +
+                        "\nAt which potency do you want to start generating the Mandelset Images? Please enter a number...")
 
         # MandelSet Range
         print("Enter a max number of iterations per Mandelset Pixel Calculation")
@@ -229,13 +223,12 @@ if(commandLine):
             if(userInput.isdigit):
                 mandelSetResolution = int(userInput)
                 break
-            else:
-                if(userInput == 'Kill' or userInput == 'kill'):
+            elif(userInput == 'Kill' or userInput == 'kill'):
                     sys.exit("Killed Task")
                     input("Press enter to exit...")
-                else:
-                    print("Invalid Input: " + userInput +
-                        "\nWhat should be the image resolution? Please enter a number...")
+            else:
+                print("Invalid Input: " + userInput +
+                    "\nWhat should be the image resolution? Please enter a number...")
 
     #Generator Message
     if(generateOne == False):
