@@ -48,10 +48,11 @@ def mandelSet_calculation(WIDTH, iterations, power, stepsize, mandelSetResolutio
     output = sys.path[0] + '/Mandel_Set_Images/'
     output = output.replace('\\', '/')
     try:
-        os.mkdir(output)
+        if not os.path.exists(output):
+            os.mkdir(output)
     except OSError:
+        print(OSError)
         sys.exit("Creation of the directory %s failed" % output)
-        sys.exit("Couldnt create Save Folder (OSError), exiting Task")
     else:
         print("Successfully created the directory %s " % output)
     timestr = time.strftime("%d%m%Y-%H%M%S")
