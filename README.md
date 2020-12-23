@@ -20,4 +20,4 @@ MandelSet: <br>
   - added Controls for Size, Iterations, Amount of Images and Difference in ^power between Images
   - added Control for "starting power"
   - fixed negative Numbers (MandelSets can now be created from numbers with powers < 0 to visualize the divergence at 0)
-  - added executable that doesnt work
+  - <s>added executable that doesnt work</s> removed
